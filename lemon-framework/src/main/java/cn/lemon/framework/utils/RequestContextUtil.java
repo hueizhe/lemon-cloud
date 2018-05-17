@@ -1,5 +1,6 @@
 package cn.lemon.framework.utils;
 
+
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -64,14 +65,14 @@ public class RequestContextUtil {
      * 获取全局session值
      */
     public static Object getGlobalSessionValue(String name) {
-        return getRequestAttributes().getAttribute(name, RequestAttributes.SCOPE_GLOBAL_SESSION);
+        return getRequestAttributes().getAttribute(name, RequestAttributes.SCOPE_SESSION);
     }
 
     /**
      * 设置全局session值
      */
     public static void setGlobalSessionValue(String name, Object value) {
-        getRequestAttributes().setAttribute(name, value, RequestAttributes.SCOPE_GLOBAL_SESSION);
+        getRequestAttributes().setAttribute(name, value, RequestAttributes.SCOPE_SESSION);
     }
 
     /**

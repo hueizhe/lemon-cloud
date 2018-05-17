@@ -30,22 +30,22 @@ public class JexlUtil {
         return e.evaluate(context);
     }
 
-    public static void main(String[] args) {
-        String exp =
-                "{" +
-                "    if (value == 'blue')" +
-                "    {" +
-                "        return 1;" +
-                "    }" +
-                "    else" +
-                "    {" +
-                "        return 0;" +
-                "    }" +
-                "}";
-
-        Map<String, Object> params = Maps.newHashMap();
-        params.put("value", "blue");
-        
-        System.out.println(JexlUtil.evaluate(exp, params));
-    }
+//    public static void main(String[] args) {
+//        String exp =
+//                "{" +
+//                "    if (value == 'blue')" +
+//                "    {" +
+//                "        return 1;" +
+//                "    }" +
+//                "    else" +
+//                "    {" +
+//                "        return 0;" +
+//                "    }" +
+//                "}";
+//
+//        Map<String, Object> params = Maps.newHashMap();
+//        params.put("value", "blue");
+//
+//        System.out.println(JexlUtil.evaluate(exp, params));
+//    }
 }

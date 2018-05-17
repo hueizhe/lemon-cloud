@@ -54,8 +54,8 @@ public class Underline2Camel {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        String field = "testField";
-        System.out.println(Underline2Camel.camel2Underline(field));
-    }
+//    public static void main(String[] args) {
+//        String field = "testField";
+//        System.out.println(Underline2Camel.camel2Underline(field));
+//    }
 }
