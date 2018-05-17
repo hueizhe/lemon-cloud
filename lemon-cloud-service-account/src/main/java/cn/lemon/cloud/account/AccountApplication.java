@@ -8,12 +8,12 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
- * Created by lonyee on 2017/4/6.
+ * @author hueizhe
  */
+@EnableHystrix
+@EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
-@EnableFeignClients
-@EnableHystrix
 public class AccountApplication {
     /**
      * 启动项目DiscoveryClientService

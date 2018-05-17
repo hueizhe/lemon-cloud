@@ -3,6 +3,7 @@ package cn.lemon.cloud.account.entity;
 import cn.lemon.framework.core.BasicEntityBean;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Repository;
 
 
 /**************************
@@ -14,6 +15,7 @@ import lombok.Setter;
  **************************/
 @Getter
 @Setter
+@Repository
 public class User extends BasicEntityBean {
 	//fields
 	/** 国别代码 86 中国 **/

@@ -11,3 +11,11 @@ spring:
 endpoints:
   restart:
     enabled: true
+
+debug : true
+
+logging  :
+  level :
+      org :
+        springframework :
+                      web : DEBUG

@@ -3,6 +3,7 @@ package cn.lemon.cloud.account.entity;
 import cn.lemon.framework.core.BasicEntityBean;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Repository;
 
 
 /**************************
