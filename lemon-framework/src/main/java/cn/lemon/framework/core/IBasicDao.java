@@ -18,7 +18,7 @@ import cn.lemon.framework.query.QueryPage;
  * @author lonyee
  * @date 2016-07-14
  */
-public interface IBasicDao<T extends BasicEntityBean<I>, I extends Serializable> {
+public interface IBasicDao<T extends BasicEntityBean, I > {
 	
     /**
      * 保存记录

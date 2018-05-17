@@ -1,8 +1,9 @@
 package cn.lemon.cloud.account.config;
 
+
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,8 +22,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @ConditionalOnClass({ EnableTransactionManagement.class })
-@AutoConfigureAfter({ DatabaseConfiguration.class })  
-@MapperScan(basePackages={"cn.lemon.account.**.repository"})
+@AutoConfigureAfter({ DatabaseConfiguration.class })
 public class MybatisConfiguration {
     private static Logger logger = LoggerFactory.getLogger(MybatisConfiguration.class);  
     
@@ -33,22 +33,29 @@ public class MybatisConfiguration {
     
     @Resource(name="dataSource")
     private DataSource dataSource;
-    
+
+
+    @Bean
+    public MapperScannerConfigurer mapperScannerConfigurer() {
+        MapperScannerConfigurer mapperScannerConfigurer
+                = new MapperScannerConfigurer();
+        mapperScannerConfigurer.setBasePackage("cn.lemon.cloud.account.repository");
+        return mapperScannerConfigurer;
+    }
+
     @Bean(name="sqlSessionFactory")
     @ConditionalOnMissingBean
-    public SqlSessionFactory sqlSessionFactory() {
-        try {
+    public SqlSessionFactory sqlSessionFactory() throws Exception {
+
             SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
             sessionFactory.setDataSource(dataSource);
             sessionFactory.setTypeAliasesPackage(typeAliasesPackage);
-            PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-            sessionFactory.setMapperLocations(resolver.getResources(mapperLocations));
 
-            return sessionFactory.getObject();
-        } catch (Exception e) {
-            logger.warn("Could not confiure mybatis session factory");
-            return null;
-        }
+            PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+            sessionFactory.setMapperLocations(resolver.getResources("classpath:mybatis/mapper/*.xml"));
+
+            return sessionFactory .getObject() ;
+
     }
     
 	@Bean

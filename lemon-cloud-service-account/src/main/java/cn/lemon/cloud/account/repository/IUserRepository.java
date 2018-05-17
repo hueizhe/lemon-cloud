@@ -10,7 +10,7 @@ import cn.lemon.framework.core.IBasicDao;
  * @date 2017-04-05 15:20:52
  * 
  **************************/
-public interface IUserRepository extends IBasicDao<User>{
+public interface IUserRepository extends IBasicDao<User, Integer>{
     /**
      * 根据手机号查询用户信息
      */

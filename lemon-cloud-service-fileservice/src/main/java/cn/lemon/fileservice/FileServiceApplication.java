@@ -5,7 +5,8 @@ import org.csource.fastdfs.FDFSConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.web.MultipartAutoConfiguration;
+
+import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
@@ -40,7 +41,8 @@ public class FileServiceApplication {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
         resolver.setDefaultEncoding("UTF-8");
         resolver.setMaxInMemorySize(40960);
-        resolver.setMaxUploadSize(50 * 1024 * 1024);//上传文件大小 50M 50*1024*1024
+        //上传文件大小 50M 50*1024*1024
+        resolver.setMaxUploadSize(50 * 1024 * 1024);
         return resolver;
     }
 

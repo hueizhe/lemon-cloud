@@ -1,6 +1,6 @@
 package cn.lemon.cloud.service.controller;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.ServiceInstance;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by lonyee on 2017/4/6.
@@ -23,9 +24,14 @@ public class ComputeController {
 
     @RequestMapping(value = "/add" ,method = RequestMethod.GET)
     public Integer add(@RequestParam Integer a, @RequestParam Integer b) {
-        ServiceInstance instance = client.getLocalServiceInstance();
+        List<ServiceInstance> instanceList = client.getInstances("service");
         Integer r = a + b;
-        logger.info("/add, host:" + instance.getHost() + ", service_id:" + instance.getServiceId() + ", result:" + r);
+        if(instanceList != null){
+            for (ServiceInstance instance :instanceList  ) {
+                logger.info("/add, host:" + instance.getHost() + ", service_id:" + instance.getServiceId() + ", result:" + r);
+            }
+        }
+
         return r;
     }
 }

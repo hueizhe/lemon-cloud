@@ -10,6 +10,6 @@ import cn.lemon.framework.core.IBasicDao;
  * @date 2017-04-17 16:36:05
  * 
  **************************/
-public interface IMenuPermissionRepository extends IBasicDao<MenuPermission>{
+public interface IMenuPermissionRepository extends IBasicDao<MenuPermission, Integer>{
 	
 }

@@ -20,7 +20,7 @@ public class DatabaseConfiguration {
 	private static Logger logger = LoggerFactory.getLogger(DatabaseConfiguration.class);
 
 	@Primary
-	@Bean(name= "dataSource", destroyMethod= "close", initMethod="init")
+	@Bean(name= "dataSource")
     @ConfigurationProperties(prefix="spring.dataSource")
     public DataSource dataSource() {
 		logger.debug("Configruing DataSource");

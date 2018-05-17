@@ -24,7 +24,8 @@ public class JsonpResponseBodyAdvice  extends AbstractJsonpResponseBodyAdvice {
     private final String[] jsonpQueryParamNames;
 
     public JsonpResponseBodyAdvice() {
-        super("callback"); //"jsonp"
+        //"jsonp"
+        super("callback");
         this.jsonpQueryParamNames = new String[]{"callback"};
     }
 
